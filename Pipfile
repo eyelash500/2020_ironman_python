@@ -12,6 +12,7 @@ numpy = "*"
 pandas = "*"
 matplotlib = "*"
 jupyter = "*"
+pyodbc = "*"
 
 [requires]
 python_version = "3.8"
