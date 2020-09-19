@@ -14,5 +14,5 @@ with pyodbc.connect(
         row = cursor.fetchone()
         print("This is data in my Azure.....by Eyelash")
         while row:
-            print(str(row[0]) + " " + str(row[1]))
+            print(f"{row[0]} {row[1]} {row[2]} {row[3]} {row[4]}  {row[5]}")
             row = cursor.fetchone()
