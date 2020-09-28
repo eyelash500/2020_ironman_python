@@ -81,6 +81,7 @@ def save_data_to_azure_db(symbol, tock_data):
 def get_stock_history_data(stock_symbol, his_month):
     # API位置
     # address = "http://www.twse.com.tw/exchangeReport/STOCK_DAY_ALL?response=open_data"
+    
     stock = stock_symbol
     date = his_month
     address = f"https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date={date}&stockNo={stock}"
@@ -102,15 +103,16 @@ def get_stock_history_data(stock_symbol, his_month):
     print("===finished===")
 
 
-# 取得從2006-1到現在的所有月份，用此可以取得資料
+# 時間不能太早：{"stat":"查詢日期小於99年1月4日，請重新查詢!"}
+# 取得從2010-1-1到現在的所有月份，用此可以取得資料
 date_list = (
     pandas.date_range(
-        "2006-1-1",
+        "2010-1-1",
         datetime.datetime.now().strftime("%Y-%m-%d"),
         freq="MS",
         tz="Asia/Taipei",
     )
-    .strftime("%Y%m")
+    .strftime("%Y%m%d")
     .tolist()
 )
 print(date_list)
